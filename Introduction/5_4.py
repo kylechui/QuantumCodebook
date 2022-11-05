@@ -9,6 +9,32 @@ def too_many_ts():
     Returns:
         array[float]: The measurement outcome probabilities.
     """
+    qml.Hadamard(wires=0)
+    qml.Hadamard(wires=1)
+    qml.Hadamard(wires=2)
+
+    qml.T(wires=0)
+    qml.T(wires=0)
+    qml.T(wires=1)
+    qml.adjoint(qml.T)(wires=2)
+
+    qml.Hadamard(wires=0)
+    qml.Hadamard(wires=1)
+    qml.Hadamard(wires=2)
+
+    qml.adjoint(qml.T)(wires=0)
+    qml.adjoint(qml.T)(wires=0)
+    qml.T(wires=1)
+    qml.T(wires=1)
+    qml.T(wires=1)
+    qml.T(wires=1)
+    qml.adjoint(qml.T)(wires=2)
+    qml.adjoint(qml.T)(wires=2)
+    qml.adjoint(qml.T)(wires=2)
+
+    qml.Hadamard(wires=0)
+    qml.Hadamard(wires=1)
+    qml.Hadamard(wires=2)
 
     return qml.probs(wires=[0, 1, 2])
 
@@ -33,7 +59,7 @@ def just_enough_ts():
     qml.Hadamard(wires=2)
     qml.S(wires=0)
     qml.T(wires=1)
-    qml.adjoint(qml.T)(wires=1)
+    qml.adjoint(qml.T)(wires=2)
     qml.Hadamard(wires=0)
     qml.Hadamard(wires=1)
     qml.Hadamard(wires=2)
